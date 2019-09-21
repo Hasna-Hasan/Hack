@@ -1,0 +1,10 @@
+#---
+# - hosts: localhost
+#   become: yes
+#   roles: 
+#   - role1
+---
+ - hosts: localhost
+   become: true
+   roles:
+   - role1

@@ -1,0 +1,4 @@
+---
+# tasks file for maven
+
+- import_tasks: install-maven.yml
