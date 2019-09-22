@@ -3,4 +3,4 @@
    - localhost
    become: yes
    roles: 
-   - docker_1
+   - docker

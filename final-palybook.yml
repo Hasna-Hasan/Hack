@@ -1,0 +1,78 @@
+---
+ - hosts: localhost
+   become: yes
+   roles:
+   - java
+   - jenkins
+   - role1
+   - maven
+   - docker
+   - python
+ 
+   tasks:
+   - name: ansible create directory example
+     file:
+        path: /work
+        state: directory
+        mode: '0755'
+
+   - name: upgrade all packages
+     yum:
+        name: '*'
+        state: latest
+
+ - hosts: Sonatype-Nexus
+   become: yes
+   roles:
+   - java
+   - role1
+   - docker
+   - python
+
+   tasks:
+   - name: ansible create directory example
+     file:
+        path: /work
+        state: directory
+        mode: '0755'
+#   - name: copy docker-compos
+#     copy:
+#        src: /etc/ansible/roles/docker-compose.yml
+#        dest: /work
+
+   - name: upgrade all packages
+     yum:
+        name: '*'
+        state: latest
+
+#   - name: run the service defined in my_project's docker-compose.yml
+#     docker_compose:
+#        project_src: /work/docker-cmopose.yml
+#        register: output
+
+ - hosts: Sonar-qube
+   become: yes
+   roles:
+   - java
+   - role1
+   - docker
+   - python
+
+   tasks:
+   - name: ansible create directory example
+     file:
+        path: /work
+        state: directory
+        mode: '0755'
+#   - name: copy docker-compos
+#     copy:
+#        src: ~/sample.txt
+#        dest: /work
+   - name: upgrade all packages
+     yum:
+        name: '*'
+        state: latest
+#   - name: run the service defined in my_project's docker-compose.yml
+#     docker_compose:
+#        project_src: /work/docker-cmopose.yml
+#        register: output
